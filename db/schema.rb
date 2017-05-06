@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506094529) do
+ActiveRecord::Schema.define(version: 20170506183126) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "cclogin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cclogin"], name: "index_users_on_cclogin", unique: true
   end
 
 end
