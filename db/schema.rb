@@ -19,5 +19,4 @@ ActiveRecord::Schema.define(version: 20170506183126) do
     t.datetime "updated_at", null: false
     t.index ["cclogin"], name: "index_users_on_cclogin", unique: true
   end
-
 end
