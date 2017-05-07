@@ -1,0 +1,25 @@
+<table>
+    <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Score</th>
+        <th>Title</th>
+    </tr>
+<% @user_score_pairs.each do |usp| %>
+    <tr>
+        <td>
+        <%= usp[:index] %>
+        </td>
+        <td>
+            <%= usp[:user][:name] %>
+        </td>
+        <td>
+            <%= usp[:score] %>
+        </td>
+        <td>
+            TBA
+        </td>
+    </tr>
+<% end %>
+</table>
+<%= will_paginate @user_score_pairs %>

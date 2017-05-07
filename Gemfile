@@ -10,6 +10,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'sqlite3'
