@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'login', to: 'sessions_controller#login', as: 'login_page'
+  post 'login', to: 'sessions_controller#create', as: 'login'
   get 'leaderboard', to: 'users#leaderboard', as: 'leaderboard'
   get 'show/:id', to: 'users#show', as: 'show'
   get 'tickets/new'
