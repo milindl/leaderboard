@@ -10,10 +10,19 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @user_tickets = @user.tickets.all.paginate(page: params[:page], per_page: 50)
   end
 
   private
   def user_score(user)
-    user.tickets.all.map { |t| t.points }.sum
+    points_list = user.tickets.all.map do |t|
+      if t.status
+        t.points
+      else
+        0
+      end
+    end
+    points_list.sum
   end
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'users/leaderboard'
-  get 'users/show'
+  get 'show/:id', to: 'users#show', as: 'show'
   get 'tickets/new'
   post 'tickets/create'
   get '/help', to: 'static_pages#help'

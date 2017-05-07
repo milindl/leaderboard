@@ -11,7 +11,7 @@
         <%= usp[:index] %>
         </td>
         <td>
-            <%= usp[:user][:name] %>
+            <%= link_to usp[:user][:name], show_path(usp[:user]) %>
         </td>
         <td>
             <%= usp[:score] %>
