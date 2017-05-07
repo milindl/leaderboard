@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/leaderboard'
+  get 'leaderboard', to: 'users#leaderboard', as: 'leaderboard'
   get 'show/:id', to: 'users#show', as: 'show'
   get 'tickets/new'
   post 'tickets/create'

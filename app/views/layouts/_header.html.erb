@@ -1,12 +1,12 @@
 <header>
     <div class ="logocontainer">
-        <%= link_to "Leaderboard App", '#', id: "logo" %>
+        <%= link_to "Leaderboard App", root_path,id: "logo" %>
     </div>
     <nav>
       <ul>
         <li><%= link_to "Help",   help_path %></li>
-        <li><%= link_to "Leaderboard",   '#' %></li>
-        <li><%= link_to "Add Request", '#' %></li>
+        <li><%= link_to "Leaderboard",   leaderboard_path %></li>
+        <li><%= link_to "Add Request", tickets_new_path  %></li>
       </ul>
     </nav>
 </header>
