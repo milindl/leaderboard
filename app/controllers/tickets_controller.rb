@@ -2,9 +2,6 @@ class TicketsController < ApplicationController
   def new
   end
 
-  def view
-  end
-
   def create
     cclogin = params[:cclogin]
     ccpassword = params[:ccpassword]
@@ -25,10 +22,6 @@ class TicketsController < ApplicationController
     flash[:success] = "Ticket created successfully. It is pending approval."
     redirect_to root_path
   end
-
-  def leaderboard
-  end
-
 
   private
   def ticket_params
