@@ -3,6 +3,7 @@ require 'uri'
 require 'json'
 
 class User < ApplicationRecord
+  has_many :tickets
   validates :cclogin,
             presence: true,
             length: { minimum: 1, maximum: 12},
@@ -11,7 +12,6 @@ class User < ApplicationRecord
   attr_accessor :password
   before_create :get_user_realname
   validate :is_valid_login?
-
 
 
   def is_valid_login?

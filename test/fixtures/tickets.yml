@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# one:
+#   link: MyString
+#   user: one
+#   desc: MyText
+#   status: false
+#   typeof: MyString
+
+# two:
+#   link: MyString
+#   user: two
+#   desc: MyText
+#   status: false
+#   typeof: MyString
