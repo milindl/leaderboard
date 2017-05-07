@@ -1,2 +1,19 @@
-<h1>Tickets#new</h1>
-<p>Find me in app/views/tickets/new.html.erb</p>
+<% provide(:title, "New Ticket") %>
+<h1>Request a new Ticket</h1>
+<div class= "formcontainer">
+   <%= form_tag(url_for(controller: 'tickets', action: 'create'), method: 'post') do %>
+        <%= label_tag(:cclogin, "CC Username") %>
+        <%= text_field_tag(:cclogin, params[:cclogin]) %>
+        <%= label_tag(:ccpassword, "CC Password") %>
+        <%= password_field_tag(:ccpassword) %>
+        <%= label_tag(:link, "Link to Ticket Content") %>
+        <%= text_field_tag(:link, params[:link]) %>
+        <%= label_tag(:desc, "Short Description [Optional]") %>
+        <%= text_area_tag(:desc, params[:desc]) %>
+        <%= label_tag(:points, "Points Requested [Enter 0 if unsure]") %>
+        <%= number_field_tag(:points, params[:points], min: 0, step: 1) %>
+        <%= label_tag(:typeof, "Type of Request [Open Source, Competetive, ML, Other]") %>
+        <%= text_field_tag(:typeof, params[:typeof]) %>
+        <%= submit_tag "Request" %>
+    <% end %>
+  </div>
