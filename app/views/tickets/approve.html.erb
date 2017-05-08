@@ -1,0 +1,29 @@
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description/Link</th>
+        <th>Status</th>
+        <th>Points Requested</th>
+        <th>Points Given</th>
+    </tr>
+    <% @tickets.each do |ut| %>
+        <tr>
+            <%= render ut %>
+            <%= form_tag(controller: "tickets", action: "changestatus", method: "post") do %>
+                <%= hidden_field_tag(:ticket_id, ut.id) %>
+
+                <td>
+                    <%= number_field_tag(:newpoints, ut.points, min: 0, step: 1) %>
+                </td>
+                <td>
+                    <%= submit_tag("Approve") %>
+                </td>
+                <td>
+                    <%= submit_tag("Delete") %>
+                </td>
+                <% end %>
+        </tr>
+    <% end %>
+</table>

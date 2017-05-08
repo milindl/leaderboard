@@ -2,6 +2,29 @@ class TicketsController < ApplicationController
   def new
   end
 
+  def approve
+    if session[:user].nil?
+      flash[:error] = "Need login to access this page."
+      redirect_to login_page_path
+    else
+      @tickets = Ticket.where(status: false)
+      render 'approve'
+    end
+  end
+
+  def changestatus
+    if session[:user].nil?
+      flash[:error] = "Naughty, naughty ;). Please login."
+      redirect_to login_page_path
+    else
+      if params[:commit] == "Approve"
+        approve_ticket(params[:ticket_id], params[:newpoints])
+      else
+        remove_ticket(params[:ticket_id])
+      end
+    end
+  end
+
   def create
     cclogin = params[:cclogin]
     ccpassword = params[:ccpassword]
@@ -30,6 +53,16 @@ class TicketsController < ApplicationController
 
   def error_params
     params.permit(:points, :desc, :link, :typeof, :cclogin)
+  end
+
+  def remove_ticket(ticket_id)
+    Ticket.delete(ticket_id)
+  end
+
+  def approve_ticket(ticket_id, pts)
+    t = Ticket.find_by(id: ticket_id)
+    t.update_column(:points, pts)
+    t.update_column(:status, true)
   end
 
 end
