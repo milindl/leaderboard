@@ -10,7 +10,7 @@ class SessionsControllerController < ApplicationController
     user = AdminUser.find_by(username: params[:session][:username])
     if user && user.authenticate(params[:session][:password])
       session[:user] = user
-      redirect_to leaderboard_path # TODO replace with approval path
+      redirect_to tickets_approve_path
     else
       flash[:error] = "Invalid credentials."
       redirect_to login_page_path
