@@ -1,0 +1,8 @@
+<td><%= ticket.created_at.to_formatted_s(:short) %></td>
+<td><%= ticket.user.name %></td>
+<td><%= ticket.typeof %></td>
+<td>
+    <%= link_to desc_link_text(ticket), ticket.link %></td>
+</td>
+<td><%= status_word(ticket.status) %></td>
+<td><%= ticket.points %></td>

@@ -3,6 +3,7 @@
 <table border="1">
     <tr>
         <th>Date</th>
+        <th>Name</th>
         <th>Type</th>
         <th>Description and Link</th>
         <th>Approval Status</th>
@@ -10,13 +11,7 @@
     </tr>
 <% @user_tickets.each do |ut| %>
     <tr>
-        <td><%= ut.created_at.to_formatted_s(:short) %></td>
-        <td><%= ut.typeof %></td>
-        <td>
-            <%= link_to desc_link_text(ut), ut.link %></td>
-        </td>
-        <td><%= status_word(ut.status) %></td>
-        <td><%= ut.points %></td>
+        <%= render ut %>
     </tr>
 <% end %>
 </table>
