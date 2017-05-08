@@ -12,14 +12,13 @@ Next, migrate the database:
 $ bundle exec rails db:migrate
 ```
 
-Finally, run the test suite to verify that everything is working correctly:
-
-```
-$ bundle exec rails test
-```
-
-If the test suite passes, you'll be ready to run the app in a local server:
+Then, run it.
 
 ```
 $ bundle exec rails server
 ```
+
+
+Admin users can only be added thru rails console as of now, and that is
+a good way to do it since there will be at most 4 admin users at any
+time.
