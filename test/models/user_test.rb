@@ -1,13 +1,23 @@
 require 'test_helper'
+require 'webmock/test_unit'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(cclogin: 'dummy', password: 'dummy')
+    set_up_fake_network
   end
-  # These tests are not very useful since I cannot use an actual
-  # user, as that would compromise their CC login
-  test "save should not be possible with dummy user" do
-    assert_not @user.save
+
+  test "save should be possible with valid user" do
+    user = User.new(cclogin: valid_user, password: valid_password)
+    assert user.save
+  end
+
+  test "save should not be possible with incorrect password" do
+    user = User.new(cclogin: valid_user, password: invalid_password)
+    assert_not user.save
+  end
+
+  test "save should not be possible with incorrect user" do
+    user = User.new(cclogin: invalid_user, password: invalid_password)
+    assert_not user.save
   end
 end
-

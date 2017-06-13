@@ -15,6 +15,7 @@ gem 'will_paginate'
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'webmock'
   gem 'byebug' , platform: :mri
 end
 
@@ -28,6 +29,7 @@ end
 group :test do
   gem 'rails-controller-testing'
   gem 'minitest-reporters'
+  gem 'test-unit'
   gem 'guard'
   gem 'guard-minitest'
 end
