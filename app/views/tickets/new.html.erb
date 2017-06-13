@@ -13,9 +13,7 @@
         <%= label_tag(:points, "Points Requested [Enter 0 if unsure]") %>
         <%= number_field_tag(:points, params[:points], min: 0, step: 1) %>
         <%= label_tag(:typeof, "Type of Request") %>
-        <%= select_tag(:typeof, options_for_select(
-            [['Open Source','Open Source'], ['Competitive', 'Competitive'],
-            ['ML', 'ML'], ['Other', 'Other']])) %>
+        <%= select_tag(:typeof, options_for_select(get_ticket_types())) %>
         <%= submit_tag "Request" %>
     <% end %>
   </div>
