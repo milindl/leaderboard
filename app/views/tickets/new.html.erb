@@ -12,8 +12,10 @@
         <%= text_area_tag(:desc, params[:desc]) %>
         <%= label_tag(:points, "Points Requested [Enter 0 if unsure]") %>
         <%= number_field_tag(:points, params[:points], min: 0, step: 1) %>
-        <%= label_tag(:typeof, "Type of Request [Open Source, Competetive, ML, Other]") %>
-        <%= text_field_tag(:typeof, params[:typeof]) %>
+        <%= label_tag(:typeof, "Type of Request") %>
+        <%= select_tag(:typeof, options_for_select(
+            [['Open Source','Open Source'], ['Competitive', 'Competitive'],
+            ['ML', 'ML'], ['Other', 'Other']])) %>
         <%= submit_tag "Request" %>
     <% end %>
   </div>
