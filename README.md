@@ -1,6 +1,8 @@
 
 # README
 
+Tree Status: 
+[![CircleCI](https://circleci.com/gh/milindl/leaderboard/tree/master.svg?style=svg)](https://circleci.com/gh/milindl/leaderboard/tree/master)
 
 This contains the code for the leaderboard for Programming Club, IIT Kanpur.
 Note that this repository is for the initial development period only, this
