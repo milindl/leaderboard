@@ -1,0 +1,6 @@
+<td><%= u.typeof %></td>
+<td>
+    <%= link_to desc_link_text(u), u.link %></td>
+</td>
+<td><%= status_word(u.status) %></td>
+<td><%= u.points %></td>

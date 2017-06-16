@@ -1,25 +1,20 @@
+<h1>Standings</h1>
 <table>
-    <tr>
-        <th>Rank</th>
-        <th>Name</th>
-        <th>Score</th>
-        <th>Title</th>
-    </tr>
-<% @user_score_pairs.each do |usp| %>
-    <tr>
-        <td>
-        <%= usp[:index] %>
-        </td>
-        <td>
-            <%= link_to usp[:user][:name], show_path(usp[:user]) %>
-        </td>
-        <td>
-            <%= usp[:score] %>
-        </td>
-        <td>
-            TBA
-        </td>
-    </tr>
-<% end %>
+  <tr>
+    <th>Rank</th>
+    <th>Name</th>
+    <th>Score</th>
+    <th>Title</th>
+  </tr>
+  <% @user_score_pairs.each do |usp| %>
+  <tr>
+    <%= content_tag :td, usp[:index] %>
+    <%= content_tag :td do %>
+    <%= link_to usp[:user][:name], show_path(usp[:user]) %>
+    <% end %>
+    <%= content_tag :td, usp[:score] %>
+    <%= content_tag :td, "TBA" %>
+  </tr>
+  <% end %>
 </table>
 <%= will_paginate @user_score_pairs %>

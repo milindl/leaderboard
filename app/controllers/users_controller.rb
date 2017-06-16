@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     a_user_score_pairs = a_user_score_pairs.map.with_index do |pair, index|
       { :index => (index + 1), :user => pair[:user], :score => pair[:score] }
     end
-    @user_score_pairs = a_user_score_pairs.paginate(page: params[:page], per_page: 20)
+    @user_score_pairs = a_user_score_pairs.paginate(page: params[:page], per_page: 30)
   end
 
   def show
