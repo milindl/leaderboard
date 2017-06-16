@@ -67,4 +67,8 @@ Then, run it.
 $ bundle exec rails server -p <port number, default is 3000>
 ```
 
+It is recommended that you test your work before submitting a patch.
 
+```
+$ bundle exec rails t
+```

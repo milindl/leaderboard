@@ -218,7 +218,6 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   listen
-  minitest
   minitest-reporters
   pg
   puma
