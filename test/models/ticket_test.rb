@@ -29,9 +29,8 @@ class TicketTest < ActiveSupport::TestCase
     assert @ticket.save
   end
 
-  test "ticket should have negative status initially" do
-    assert_not @ticket.status
+  test "ticket should have Pending status initially" do
+    assert @ticket.pending?
   end
 
 end
-

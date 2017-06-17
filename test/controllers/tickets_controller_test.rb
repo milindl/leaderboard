@@ -75,12 +75,12 @@ class TicketsControllerTest < ActionDispatch::IntegrationTest
                                              newpoints: 20,
                                              ticket_id: ticket.id }
     assert user.tickets.all.first.points == 20
-    assert user.tickets.all.first.status == true
+    assert user.tickets.all.first.approved?
 
     # Deletion
     ticket = user.tickets.create(ticket_details)
     post tickets_changestatus_url, params: { commit: "Delete",
                                              ticket_id: ticket.id }
-    assert_not user.tickets.find_by(id: ticket.id)
+    assert user.tickets.all.second.deleted?
   end
 end
