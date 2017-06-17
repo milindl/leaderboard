@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507181021) do
+ActiveRecord::Schema.define(version: 20170620055231) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "username"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170507181021) do
     t.string "link"
     t.integer "user_id"
     t.text "desc"
-    t.boolean "status"
+    t.integer "status", default: 0, null: false
     t.string "typeof"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

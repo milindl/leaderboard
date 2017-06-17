@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   private
   def net_score(user_ticket_list)
-    user_ticket_list.sum('points')
+    user_ticket_list.approved.sum(&:points)
   end
   def add_ranks_by_score!(score_pairs, score, rank_name)
     score_pairs = score_pairs.sort_by { |k| k[score] }.reverse
