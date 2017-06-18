@@ -4,6 +4,7 @@
     <th>Rank</th>
     <th>Name</th>
     <th>Score</th>
+    <th>Monthly</th>
     <th>Title</th>
   </tr>
   <% @user_score_pairs.each do |usp| %>
@@ -13,6 +14,7 @@
     <%= link_to usp[:user][:name], show_path(usp[:user]) %>
     <% end %>
     <%= content_tag :td, usp[:score] %>
+    <%= content_tag :td, usp[:month_index] %>
     <%= content_tag :td, "TBA" %>
   </tr>
   <% end %>

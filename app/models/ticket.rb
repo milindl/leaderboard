@@ -16,6 +16,9 @@ class Ticket < ApplicationRecord
   validates :points,
             presence: true
 
+  scope :all_this_month, -> { where("DATE(created_at) BETWEEN ? AND ?", Time.now - 1.month, Time.now) }
+  scope :approved, -> { where(status: true) }
+
   def set_status
     self.status = false
   end

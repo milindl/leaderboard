@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
   def leaderboard
     users = User.all
-    a_user_score_pairs = users.map { |user| {:user=> user, :score=> user_score(user)} }
-    a_user_score_pairs = a_user_score_pairs.sort_by { |k| k[:score] }.reverse
-    a_user_score_pairs = a_user_score_pairs.map.with_index do |pair, index|
-      { :index => (index + 1), :user => pair[:user], :score => pair[:score] }
-    end
+    a_user_score_pairs = users.map { |user| {:user => user,
+                                             :score => net_score(user.tickets.all),
+                                             :month_score => net_score(user.tickets.all_this_month) } }
+    add_ranks_by_score!(a_user_score_pairs, :month_score, :month_index)
+    add_ranks_by_score!(a_user_score_pairs, :score, :index)
+    puts a_user_score_pairs
     @user_score_pairs = a_user_score_pairs.paginate(page: params[:page], per_page: 30)
   end
 
@@ -15,14 +16,14 @@ class UsersController < ApplicationController
   end
 
   private
-  def user_score(user)
-    points_list = user.tickets.all.map do |t|
-      if t.status
-        t.points
-      else
-        0
-      end
+  def net_score(user_ticket_list)
+    user_ticket_list.sum('points')
+  end
+  def add_ranks_by_score!(score_pairs, score, rank_name)
+    score_pairs = score_pairs.sort_by { |k| k[score] }.reverse
+    score_pairs.map.with_index do |pair, index|
+      pair[rank_name] = index + 1
+      pair
     end
-    points_list.sum
   end
 end
