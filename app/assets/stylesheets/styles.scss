@@ -1,5 +1,98 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro');
+@font-face { 
+    font-family:"STARWARS";
+    src:url("star-wars-font/STARWARS.eot?") format("eot"),
+    url("star-wars-font/STARWARS.woff") format("woff"),
+    url("star-wars-font/STARWARS.ttf") format("truetype"),
+    url("star-wars-font/STARWARS.svg#STARWARS") format("svg");
+    font-weight:normal;
+    font-style:normal;
+}
+
+/* For stary background */
+// n is number of stars required
+@function multiple-box-shadow($n) {
+  $value: "#{random(2000)}px #{random(2000)}px #FFF";
+
+  @for $i from 2 through $n {
+    $value: "#{$value} , #{random(2000)}px #{random(2000)}px #FFF";
+  }
+
+  @return unquote($value);
+}
+
+$shadows-small: multiple-box-shadow(700);
+$shadows-medium: multiple-box-shadow(200);
+$shadows-big: multiple-box-shadow(100);
+
+#stars {
+  width: 1px;
+  height: 1px;
+  z-index: -100;
+  background: transparent;
+  box-shadow: $shadows-small;
+  animation: animStar 150s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: $shadows-small;
+  }
+}
+
+#stars2 {
+  width: 2px;
+  height: 2px;
+  z-index: -100;
+  background: transparent;
+  box-shadow: $shadows-medium;
+  animation: animStar 100s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: $shadows-medium;
+  }
+}
+
+#stars3 {
+  width: 3px;
+  height: 3px;
+  z-index: -100;
+  background: transparent;
+  box-shadow: $shadows-big;
+  animation: animStar 50s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: $shadows-big;
+  }
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+/* For stary background */
+
 $heading-font: 'Source Sans Pro', sans-serif;
+$star-wars: 'STARWARS';
 $font: 'Open Sans', sans-serif;
 // Colors:
 $dark-blue: #002171;
@@ -25,9 +118,9 @@ html {
         margin: 0px;
         flex-flow: column nowrap;
         align-items: stretch;
-        background: #f7feff;
+        background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
         header {
-            background: #fff;
+            background: #1a1a1a;
             box-shadow: 0 10px 20px rgba(0,0,0,0.02), 0 6px 6px rgba(0,0,0,0.05);
             padding: 1vh 5vw;
             display: flex;
@@ -37,10 +130,10 @@ html {
                 font-size: 2em;
                 align-items: center;
                 a {
-                    font-family: $heading-font;
+                    font-family: $star-wars;
                     font-variant: small-caps;
                     text-decoration: none;
-                    color: black;
+                    color: white;
                 }
             }
             .hamburger {
@@ -80,6 +173,7 @@ html {
             margin: 0 auto;
             margin-bottom: 5vw;
             display: flex;
+            flex-grow: 1;
             flex-flow: column nowrap;
             align-items: stretch;
             .flash {
@@ -172,12 +266,11 @@ html {
             flex-flow: column nowrap;
             justify-content: flex-end;
             align-items: center;
-            box-shadow: inset 0 8px 10px -6px rgba(0,0,0,0.3), inset 0 8px 90px -20px rgba(0,0,0,0.15);
             width: 100%;
-            flex-grow: 1;
+            height: 272px;
             margin: 0 auto;
             padding: 0px;
-            background: $blue;
+            background: url('https://static-mh.content.disney.io/starwars/assets/footer/vader-1c0fe900f0e4.jpg') no-repeat center, #1a1a1a;
             h4 {
                 font-family: $heading-font;
                 text-align: center;
