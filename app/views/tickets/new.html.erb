@@ -1,5 +1,5 @@
 <% provide(:title, "New Ticket") %>
-<h1>Request a New Ticket</h1>
+<h1 class="ticket_heading">Request a New Ticket</h1>
 <div class= "formcontainer">
    <%= form_tag(url_for(controller: 'tickets', action: 'create'), method: 'post') do %>
         <%= label_tag(:cclogin, "CC Username") %>

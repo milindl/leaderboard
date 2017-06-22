@@ -1,21 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro');
 @font-face { 
     font-family:"STARWARS";
-    src:url("star-wars-font/STARWARS.eot?") format("eot"),
-    url("star-wars-font/STARWARS.woff") format("woff"),
-    url("star-wars-font/STARWARS.ttf") format("truetype"),
-    url("star-wars-font/STARWARS.svg#STARWARS") format("svg");
+    src: url("star-wars-font/STARWARS.ttf") format("truetype");
     font-weight:normal;
     font-style:normal;
+}
+@font-face {
+	font-family:'Geogrotesque-Light';
+	src: url("star-wars-font/Geogrotesque-Light_gdi.ttf") format('truetype');
+	font-weight: 300;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+0020-25CA;
 }
 
 /* For stary background */
 // n is number of stars required
 @function multiple-box-shadow($n) {
-  $value: "#{random(2000)}px #{random(2000)}px #FFF";
+  $value: "#{random(200)}vmax #{random(200)}vmax #FFF";
 
   @for $i from 2 through $n {
-    $value: "#{$value} , #{random(2000)}px #{random(2000)}px #FFF";
+    $value: "#{$value} , #{random(200)}vmax #{random(200)}vmax #FFF";
   }
 
   @return unquote($value);
@@ -25,13 +30,15 @@ $shadows-small: multiple-box-shadow(700);
 $shadows-medium: multiple-box-shadow(200);
 $shadows-big: multiple-box-shadow(100);
 
+$star-speed: 100s;
+
 #stars {
   width: 1px;
   height: 1px;
   z-index: -100;
   background: transparent;
   box-shadow: $shadows-small;
-  animation: animStar 150s linear infinite;
+  animation: animStar 3*$star-speed linear infinite;
 
   &:after {
     content: " ";
@@ -49,7 +56,7 @@ $shadows-big: multiple-box-shadow(100);
   z-index: -100;
   background: transparent;
   box-shadow: $shadows-medium;
-  animation: animStar 100s linear infinite;
+  animation: animStar 2*$star-speed linear infinite;
 
   &:after {
     content: " ";
@@ -67,7 +74,7 @@ $shadows-big: multiple-box-shadow(100);
   z-index: -100;
   background: transparent;
   box-shadow: $shadows-big;
-  animation: animStar 50s linear infinite;
+  animation: animStar $star-speed linear infinite;
 
   &:after {
     content: " ";
@@ -85,27 +92,38 @@ $shadows-big: multiple-box-shadow(100);
   }
 
   to {
-    transform: translateY(-2000px);
+    transform: translateY(-200vmax);
   }
 }
 
 /* For stary background */
 
 $heading-font: 'Source Sans Pro', sans-serif;
-$star-wars: 'STARWARS';
+$star-wars: 'STARWARS', sans-serif;
 $font: 'Open Sans', sans-serif;
+$footer-font: 'Geogrotesque-Light', sans-serif;
 // Colors:
 $dark-blue: #002171;
 $blue: #1565c0;
+$light-grey: #999;
+$dark-grey: #1a1a1a;
+$grey: #333;
+$back-block: #282727;
+$row-font1: #3273c5;
+$row-font2: #e15021;
 
 .fancy-button {
     border-radius: 5px;
-    background: $blue;
-    transition: background-color 0.5s;
-    color: white;
+    background: $grey;
+    -webkit-transition : color 0.5s, background-color 0.5s;
+    -o-transition : color 0.5s, background-color 0.5s;
+    -moz-transition : color 0.5s, background-color 0.5s;
+    transition : color 0.5s, background-color 0.5s;
+    color: $light-grey;
     border: 0px;
     &:hover {
-        background: $dark-blue;
+        background: black;
+        color: white;
     }
 }
 
@@ -118,9 +136,15 @@ html {
         margin: 0px;
         flex-flow: column nowrap;
         align-items: stretch;
-        background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+        background: black; /* Don't support gradient */
+        background: -webkit-radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); /*Safari*/
+        background: -o-radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); /*Opera 11.6 to 12.0*/
+        background: -moz-radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); /*Firefox 3.6 to 15*/
+        background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); /* Standard syntax */
+        background-size: 200vmax 200vmax;
+        background-position: center;
         header {
-            background: #1a1a1a;
+            background: $dark-grey;
             box-shadow: 0 10px 20px rgba(0,0,0,0.02), 0 6px 6px rgba(0,0,0,0.05);
             padding: 1vh 5vw;
             display: flex;
@@ -136,31 +160,34 @@ html {
                     color: white;
                 }
             }
-            .hamburger {
-                display: none;
-            }
             nav {
                 ul {
                     list-style-type: none;
                     li {
                         display: inline-block;
                         padding: 0.4em 0.5em;
-                        transition: background-color 0.5s;
+                        -webkit-transition : background-color 0.5s;
+                        -o-transition : background-color 0.5s;
+                        -moz-transition : background-color 0.5s;
+                        transition : background-color 0.5s;
                         &.add-request {
                             @extend .fancy-button;
                             a {
-                                color: white;
+                                color: $light-grey;
                                 &:hover {
                                     color: white;
                                 }
                             }
                         }
                         a {
-                            transition: color 0.5s;
-                            color: #777;
+                            -webkit-transition : color 0.5s;
+                            -o-transition : color 0.5s;
+                            -moz-transition : color 0.5s;
+                            transition : color 0.5s;
+                            color: $light-grey;
                             text-decoration: none;
                             &:hover {
-                                color: #111;
+                                color: #fff;
                             }
                         }
                     }
@@ -192,14 +219,22 @@ html {
                     background: #fba;
                 }
             }
-            table {
-                margin: 3vw auto;
-                background: #aad7ef;
-                padding: 0.5em;
+
+            .standings_heading {
+                text-align: center;
+                color: $light-grey;
+                font-family:Geogrotesque-Light;
+            }
+
+           table {
+                margin: 1vw auto;
                 width: 100%;
+                background: $dark-grey;
+                border-radius: 10px;
+                padding: 1em;
+                color: $light-grey;
                 th {
-                    background: $blue;
-                    color: white;
+                    border-bottom: 1px solid $light-grey;
                 }
                 tr {
                     margin: 5em;
@@ -207,29 +242,56 @@ html {
                     td {
                         text-align: center;
                         &:nth-child(2) {
-                            text-align: left;
                             a {
+                                color: $light-grey;
                                 text-decoration: none;
                                 &:hover {
+                                    color: white;
                                     text-decoration: underline;
                                 }
                             }
                         }
-                        a {
-                            color: black;
-                        }
-                    }
-                }
-                tr:nth-child(2n+1) {
-                    background: #8bb4ed;
-                }
-                tr:nth-child(2n) {
-                    background: #aad7ef;
-                }
+                    }   
+                 }
+//                tr:nth-child(2n+1) {
+//                    border: 1px solid $row-font1;
+//                    border-bottom: 10px solid $row-font1;
+//                }
+//                tr:nth-child(2n) {
+//                    border: 1px solid $row-font2;
+//                    border-bottom: 10px solid $row-font2;
+//                }
             }
             div.pagination {
                 width: 100%;
                 text-align: center;
+            }
+            
+            .help_heading {
+                text-align: center;
+                color: $light-grey;
+                font-family:Geogrotesque-Light;
+            }
+
+            .helpmanual {
+                color: $light-grey;
+                padding: 1em;
+                border-radius: 10px;
+                background: $dark-grey;
+            }
+
+            .ticket_heading {
+                color: $light-grey;
+                font-family:Geogrotesque-Light;
+            }
+
+            .formcontainer {
+                color: $light-grey;
+                padding: 1em;
+                border-radius: 10px;
+                background: $dark-grey;
+                width: 93%;
+                max-width: 528px;
             }
             form {
                 width: 100%;
@@ -239,20 +301,38 @@ html {
                 input, select, textarea {
                     display: block;
                     margin: 0px;
-                    border: 0px;
-                    border-bottom: 1px solid rgba(0,0,0,0.5);
-                    background: transparent;
+                    color: $light-grey;
+                    border: 1px solid transparent;
+//                    border-bottom: 1px solid $light-grey;
+                    background: $back-block;
+                    border-radius: 5px;
                     margin-bottom: 1em;
-                    padding: 4px;
-                    width: 33vw;
+                    padding-top: 4px;
+                    padding-bottom: 4px;
+                    min-width: 100%;
+                    max-width: 528px;
+                    -webkit-transition: border-color 0.5 ease;
+                    -o-transition: border-color 0.5 ease;
+                    -moz-transition: border-color 0.5 ease;
                     transition: border-color 0.5 ease;
                     &[type=submit] {
                         font-size: 1rem;
                         @extend .fancy-button;
                         padding: 1em 2em;
+                        cursor: pointer;
                     }
                     &:focus {
-                        border-color: $dark-blue;
+                        outline: 0px;
+                        border: 1px solid $light-grey;
+                        border-radius: 5px;
+                    }
+                    option {
+                        background-color: $back-block;
+                        color: $light-grey;
+                        &:hover {
+                            color: white;
+                            background-color: black;
+                        }
                     }
                 }
                 textarea {
@@ -268,14 +348,25 @@ html {
             align-items: center;
             width: 100%;
             height: 272px;
-            margin: 0 auto;
+            margin: 0px;
             padding: 0px;
-            background: url('https://static-mh.content.disney.io/starwars/assets/footer/vader-1c0fe900f0e4.jpg') no-repeat center, #1a1a1a;
-            h4 {
-                font-family: $heading-font;
+            color: $light-grey;
+            font-family: $footer-font; 
+            background: url('https://static-mh.content.disney.io/starwars/assets/footer/vader-1c0fe900f0e4.jpg') no-repeat center, $dark-grey;
+            .social-links {
                 text-align: center;
-                width: 50%;
-                display: block;
+                h4 {
+                    text-align: center;
+                }
+                ul {
+                    list-style: none;
+                    margin: 0px;
+                    padding: 0px;
+
+                    li {
+                        display: inline-block;
+                    }
+                }
             }
             section.flex-footer {
                 width: 50%;
@@ -291,7 +382,7 @@ html {
                             li {
                                 list-style-type: none;
                                 a {
-                                    color: $dark-blue;
+                                    color: $light-grey;
                                     text-decoration: none;
                                 }
                             }
@@ -301,8 +392,8 @@ html {
             }
         }
     }
-
-    @media(max-width: 612px) {
+    
+    @media(max-width: 768px) {
         body {
             header {
                 flex-flow: column nowrap;
@@ -317,7 +408,7 @@ html {
                 nav {
                     display: block;
                     box-shadow: 0 0px 20px rgba(0,0,0,0.09), 0 0px 16px rgba(0,0,0,0.32);
-                    background-color: $blue;
+                    background-color: $grey;
                     top: 0px;
                     left: 0px;
                     margin-top: 3vw;
@@ -337,10 +428,10 @@ html {
                             display: inline-block;
                             background: transparent;
                             &:hover {
-                                background: #002171;
+                                background: black;
                             }
                             a {
-                                color: white;
+                                color: $light-grey;
                                 font-size: 0.7em;
                                 &:hover {
                                     color: white;
@@ -353,12 +444,15 @@ html {
                         }
                         li.add-request ::before {
                             content: "+";
+                            cursor: pointer;
                         }
                         li.leaderboard-path ::before {
                             content:'\2630';
+                            cursor: pointer;
                         }
                         li.help-path ::before {
                             content:'?';
+                            cursor: pointer;
                         }
 
                     }
@@ -366,6 +460,9 @@ html {
             }
             #maincontent {
                 width: 95%;
+                .formcontainer {
+                    margin: auto;
+                }
                 form {
                     input, select, textarea {
                         width: 90vw;
