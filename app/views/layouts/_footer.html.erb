@@ -1,5 +1,22 @@
 <footer>
-  <h4>Programming Club, IIT Kanpur</h4>
+  <h3>A Leaderboard by Programming Club, IIT Kanpur</h3>
+  <div class="social-links">
+    <h4>More about PClub on:</h4>
+    <ul id="social-link-icons">
+      <li>
+        <%= link_to "Ofiicial Site", "pclub.in", { :class => "pclub-icon" } %>
+      </li>
+      <li>
+        <%= link_to "Facebook", "https://facebook.com/groups/pclubiitk", { :class => "facebook-icon" } %>
+      </li>
+      <li>
+        <%= link_to "Github", "https://github.com/pclubiitk", { :class => "github-icon" } %>
+      </li>
+      <li>
+        <%= link_to "Twitter", "https://twitter.com/pclubiitk", { :class => "twitter-icon" } %>
+      </li>
+    </ul>
+  </div>
   <section class="flex-footer">
     <section>
       <nav>
@@ -7,15 +24,6 @@
           <li><%= link_to "Official Site", 'http://pclub.in'  %></li>
           <li><%= link_to "Official Email", 'mailto:pclubiitk@gmail.com'  %></li>
           <li><%= link_to "Contribute Code", 'https://github.com/milindl/leaderboard' %></li>
-        </ul>
-      </nav>
-    </section>
-    <section>
-      <nav>
-        <ul>
-          <li><%= link_to "GitHub", 'https://github.com/pclubiitk' %></li>
-          <li><%= link_to "Facebook", 'https://facebook.com/groups/pclubiitk' %></li>
-          <li><%= link_to "Twitter", 'https://twitter.com/pclubiitk' %></li>
         </ul>
       </nav>
     </section>

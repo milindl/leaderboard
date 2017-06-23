@@ -1,4 +1,4 @@
-<h1>Standings</h1>
+<h1 class="standings_heading">STANDINGS</h1>
 <table>
   <tr>
     <th>Rank</th>
@@ -7,7 +7,7 @@
     <th>Monthly</th>
     <th>Title</th>
   </tr>
-  <% @user_score_pairs.each do |usp| %>
+ <% @user_score_pairs.each do |usp| %>
   <tr>
     <%= content_tag :td, usp[:index] %>
     <%= content_tag :td do %>
