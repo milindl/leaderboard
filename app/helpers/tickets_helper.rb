@@ -1,13 +1,8 @@
 module TicketsHelper
   # Defines all Ticket types to select from
   @@ticket_types = ['Open Source', 'Competitive', 'ML', 'PClub Activities', 'Other']
-
-  def status_word(status_bool)
-    if status_bool
-      "Approved"
-    else
-      "Pending"
-    end
+  def status_word(status)
+    status.to_s.titleize
   end
 
   def desc_link_text(ut)

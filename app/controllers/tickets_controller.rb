@@ -7,7 +7,7 @@ class TicketsController < ApplicationController
       flash[:error] = "Need login to access this page."
       redirect_to login_page_path
     else
-      @tickets = Ticket.where(status: false)
+      @tickets = Ticket.where(status: :pending)
       render 'approve'
     end
   end
@@ -56,13 +56,14 @@ class TicketsController < ApplicationController
   end
 
   def remove_ticket(ticket_id)
-    Ticket.delete(ticket_id)
+    t = Ticket.find_by(id: ticket_id)
+    t.update_column(:status, :deleted)
   end
 
   def approve_ticket(ticket_id, pts)
     t = Ticket.find_by(id: ticket_id)
     t.update_column(:points, pts)
-    t.update_column(:status, true)
+    t.update_column(:status, :approved)
   end
 
 end
