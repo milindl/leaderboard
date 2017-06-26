@@ -111,6 +111,16 @@ $back-block: #282727;
 $row-font1: #3273c5;
 $row-font2: #e15021;
 
+.login-heading {
+    text-align: center;
+    color: $light-grey;
+    font-family: Geogrotesque-Light;
+}
+
+.credentials {
+    color: $light-grey;
+}
+
 .fancy-button {
     border-radius: 5px;
     background: $grey;
@@ -214,12 +224,20 @@ html {
                     background: #9fa;
                 }
                 &.flash-error {
-                    border-color: red;
-                    background: #fba;
+                    background: $back-block;
+                    color: $light-grey;
+                    border-color: transparent;
+                    text-align: center;
                 }
             }
 
             .standings_heading {
+                text-align: center;
+                color: $light-grey;
+                font-family:Geogrotesque-Light;
+            }
+
+            .user-heading {
                 text-align: center;
                 color: $light-grey;
                 font-family:Geogrotesque-Light;
@@ -242,6 +260,25 @@ html {
                         padding-bottom: 0.5em;
                         text-align: center;
                         &:nth-child(2) {
+                            a {
+                                color: $light-grey;
+                                text-decoration: none;
+                                &:hover {
+                                    color: white;
+                                    text-decoration: underline;
+                                }
+                            }
+                        &:nth-child(4) {
+                            a {
+                                color: $light-grey;
+                                text-decoration: none;
+                                &:hover {
+                                    color: white;
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                        &:nth-child(4) {
                             a {
                                 color: $light-grey;
                                 text-decoration: none;
