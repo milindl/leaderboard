@@ -5,7 +5,8 @@ class Ticket < ApplicationRecord
   validate :user_credentials, :on => :create
   validates :link,
             presence: true,
-            :format => URI::regexp(%w(http https))
+            :format => URI::regexp(%w(http https)),
+            uniqueness: { scope: [:user, :status] }
 
   validates :desc,
             length: { maximum: 200 }

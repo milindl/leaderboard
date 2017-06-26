@@ -78,6 +78,7 @@ class TicketsControllerTest < ActionDispatch::IntegrationTest
     assert user.tickets.all.first.approved?
 
     # Deletion
+    ticket_details["link"] = "http://link2.to"
     ticket = user.tickets.create(ticket_details)
     post tickets_changestatus_url, params: { commit: "Delete",
                                              ticket_id: ticket.id }
