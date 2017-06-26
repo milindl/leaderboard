@@ -1,11 +1,11 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
+<h1 class="login-heading">Log in</h1>
 
 <%= form_for(:session, url: login_path) do |f| %>
-      <%= f.label :username %>
+    <%= f.label :username, { :class => "credentials" } %>
       <%= f.text_field :username %>
 
-      <%= f.label :password %>
+      <%= f.label :password, { :class => "credentials" } %>
       <%= f.password_field :password %>
 
       <%= f.submit "Log in" %>
