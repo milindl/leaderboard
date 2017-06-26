@@ -278,6 +278,16 @@ html {
                                 }
                             }
                         }
+                        &:nth-child(4) {
+                            a {
+                                color: $light-grey;
+                                text-decoration: none;
+                                &:hover {
+                                    color: white;
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
                     }
                 }
                 //                tr:nth-child(2n+1) {
