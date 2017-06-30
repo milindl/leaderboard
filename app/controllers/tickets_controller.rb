@@ -1,6 +1,5 @@
 class TicketsController < ApplicationController
-  def new
-  end
+  def new; end
 
   def approve
     if session[:user].nil?
@@ -8,20 +7,19 @@ class TicketsController < ApplicationController
       redirect_to login_page_path
     else
       @tickets = Ticket.where(status: :pending)
-      render 'approve'
+      render "approve"
     end
   end
 
   def changestatus
     if session[:user].nil?
       flash[:error] = "Naughty, naughty ;). Please login."
-      redirect_to login_page_path
+      return redirect_to login_page_path
+    end
+    if params[:commit] == "Approve"
+      approve_ticket(params[:ticket_id], params[:newpoints])
     else
-      if params[:commit] == "Approve"
-        approve_ticket(params[:ticket_id], params[:newpoints])
-      else
-        remove_ticket(params[:ticket_id])
-      end
+      remove_ticket(params[:ticket_id])
     end
   end
 
@@ -34,11 +32,11 @@ class TicketsController < ApplicationController
     else
       a_user.password = ccpassword
     end
-    if a_user.is_valid_login? != true
+    if a_user.valid_login? != true
       flash[:error] = "Ticket could not be created. Check your credentials."
       return redirect_to tickets_new_url(error_params)
     end
-    if a_user.tickets.create(ticket_params).id == nil
+    if a_user.tickets.create(ticket_params).id.nil?
       flash[:error] = "Ticket could not be created. Check your ticket data."
       return redirect_to tickets_new_url(error_params)
     end
@@ -47,23 +45,23 @@ class TicketsController < ApplicationController
   end
 
   private
-  def ticket_params
-    params.permit(:points, :desc, :link, :typeof)
-  end
 
-  def error_params
-    params.permit(:points, :desc, :link, :typeof, :cclogin)
-  end
+    def ticket_params
+      params.permit(:points, :desc, :link, :typeof)
+    end
 
-  def remove_ticket(ticket_id)
-    t = Ticket.find_by(id: ticket_id)
-    t.update_column(:status, :deleted)
-  end
+    def error_params
+      params.permit(:points, :desc, :link, :typeof, :cclogin)
+    end
 
-  def approve_ticket(ticket_id, pts)
-    t = Ticket.find_by(id: ticket_id)
-    t.update_column(:points, pts)
-    t.update_column(:status, :approved)
-  end
+    def remove_ticket(ticket_id)
+      t = Ticket.find_by(id: ticket_id)
+      t.update_column(:status, :deleted)
+    end
 
+    def approve_ticket(ticket_id, pts)
+      t = Ticket.find_by(id: ticket_id)
+      t.update_column(:points, pts)
+      t.update_column(:status, :approved)
+    end
 end

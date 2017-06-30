@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class TicketsHelperTest < ActionView::TestCase
   def setup
@@ -24,5 +24,4 @@ class TicketsHelperTest < ActionView::TestCase
     ut = Ticket.new
     assert_equal desc_link_text(ut), "[Link]"
   end
-
 end

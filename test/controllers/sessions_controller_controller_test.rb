@@ -1,7 +1,6 @@
-require 'test_helper'
+require "test_helper"
 
 class SessionsControllerControllerTest < ActionDispatch::IntegrationTest
-
   def setup
     @admin = get_valid_admin
   end
@@ -33,5 +32,4 @@ class SessionsControllerControllerTest < ActionDispatch::IntegrationTest
     get login_url
     assert_redirected_to leaderboard_path
   end
-
 end

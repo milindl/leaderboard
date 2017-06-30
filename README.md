@@ -1,7 +1,7 @@
 
 # README
 
-Tree Status: 
+Tree Status:
 [![CircleCI](https://circleci.com/gh/milindl/leaderboard/tree/master.svg?style=svg)](https://circleci.com/gh/milindl/leaderboard/tree/master)
 
 This contains the code for the leaderboard for Programming Club, IIT Kanpur.
@@ -22,7 +22,7 @@ for admin users to log in as of now, but you can log in using `/login` and
 approve tickets on '/tickets/approve'
 * Admin users can only be added thru rails console as of now, and that is
 a good way to do it since there will be at most 4 admin users at any
-time I think. To add an admin user for testing, type 
+time I think. To add an admin user for testing, type
 
 ```
 $ bundle exec rails console
@@ -72,3 +72,11 @@ It is recommended that you test your work before submitting a patch.
 ```
 $ bundle exec rails t
 ```
+
+Also, after adding any code it makes sense to check it using rubocop to validate style guidelines:
+
+```
+$ bundle exec rubocop
+```
+
+Note that failing rubocop leads to a failing build on our CI, thus your code will not be accepted.

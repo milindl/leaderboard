@@ -1,7 +1,6 @@
-require 'test_helper'
+require "test_helper"
 
 class TicketsControllerTest < ActionDispatch::IntegrationTest
-
   def setup
     set_up_fake_network
     @admin = get_valid_admin
@@ -54,10 +53,10 @@ class TicketsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get approval page if logged in" do
-        post login_url, params: { session: { username: valid_admin,
-                                             password: valid_admin_pass } }
-        get tickets_approve_url
-        assert :success
+    post login_url, params: { session: { username: valid_admin,
+                                         password: valid_admin_pass } }
+    get tickets_approve_url
+    assert :success
   end
 
   test "should changestatus if details are valid" do

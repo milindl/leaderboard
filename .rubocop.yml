@@ -1,0 +1,19 @@
+inherit_gem:
+  rubocop-rails:
+    - config/rails.yml
+
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'lib/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'public/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'app/mailers/**/*'

@@ -1,5 +1,5 @@
-require 'test_helper'
-require 'webmock/test_unit'
+require "test_helper"
+require "webmock/test_unit"
 
 class UserTest < ActiveSupport::TestCase
   def setup

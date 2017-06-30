@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
@@ -15,5 +15,4 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get show_url(id: @user.id)
     assert_response :success
   end
-
 end

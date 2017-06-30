@@ -1,9 +1,8 @@
 class SessionsControllerController < ApplicationController
   def login
-    if !session[:user].nil?
-      flash[:error] = "Already logged in as #{session[:user]['username']}"
-      redirect_to leaderboard_path
-    end
+    return if session[:user].nil?
+    flash[:error] = "Already logged in as #{session[:user]["username"]}"
+    redirect_to leaderboard_path
   end
 
   def create

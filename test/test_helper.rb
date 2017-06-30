@@ -1,23 +1,23 @@
-require File.expand_path('../../config/environment', __FILE__)
-require 'rails/test_help'
-require 'webmock/test_unit'
+require File.expand_path("../../config/environment", __FILE__)
+require "rails/test_help"
+require "webmock/test_unit"
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  # TODO: Refactor, this doesn't need methods
+  # TODO: Refactor, this doesn"t need methods
   def valid_user
     "password"
   end
   def invalid_user
-    "not" + valid_user
+    "not #{valid_user}"
   end
   def valid_password
     "password"
   end
   def invalid_password
-    "not" + valid_password
+    "not #{valid_password}"
   end
 
   def valid_admin
@@ -59,7 +59,6 @@ class ActiveSupport::TestCase
 
     WebMock.stub_request(:any, "https://search.pclub.in/api/student?username=#{valid_user}").
       to_return(status: 200, body: "{ \"n\": \"Great Person\" }")
-
   end
 
   include ApplicationHelper
